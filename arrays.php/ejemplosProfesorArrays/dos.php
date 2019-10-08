@@ -130,9 +130,9 @@
 
         //--------------------
         $dado = [
-            "uno", <link href="css/style.css" rel="stylesheet">
-            "dos", <link href="css/style.css" rel="stylesheet">
-            "tres" <link href="css/style.css" rel="stylesheet">,
+            "uno", 
+            "dos",
+            "tres",
             "cuatro",
             "cinco",
             "seis"

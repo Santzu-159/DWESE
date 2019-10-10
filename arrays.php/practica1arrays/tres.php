@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Diez</title>
+    <title>Dos</title>
 </head>
 <body>
     <div class= "container m-5" align ="center">
-        <h4 class='text-center'>Ejercicio 10</h4>
+        <h4 class='text-center'>Ejercicio 2</h4>
         <p class='text-center'>
-        Mostrar por pantalla el siguiente fragmento html con una sentencia PHP:<br>
-        <xmp><a href= "/arbol/prueba.php" class="prueba" onmouseOver="status='hola';
-        return trae;">pruebade\enlace</a></xmp>
+        Realizar un programa que muestre las películas que se han visto. Crear un array que contenga los<br>
+        meses de enero, febrero, marzo y abril, asignando los valores 9, 12, 0 y 17, respectivamente. Si en alguno<br>
+        de los meses no se ha visto ninguna película, no ha de mostrar la información de ese mes.<br>
         </p>
-
+        
         <?php
-            echo "Resultado: <br>";
-            echo htmlspecialchars("<a href= \"/arbol/prueba.php\" class=\"prueba\" onmouseOver=\"status='hola';
-            return trae;\">pruebade\enlace</a>");
+
+        $meses=[
+            "enero"=>9,
+            "febrero"=>12,
+            "marzo"=>0,
+            "abril"=>17
+        ];
+
 
 
         
+            
+           
         ?>
     </div>
 </body>

@@ -22,6 +22,10 @@
                 $i=$i+2;
              }
 
+             do{
+                 echo current($array)."<br>".PHP_EOL;
+             }while(next($array))
+
         
         ?>
     </div>

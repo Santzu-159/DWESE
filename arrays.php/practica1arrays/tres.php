@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Dos</title>
+    <title>Tres</title>
 </head>
 <body>
     <div class= "container m-5" align ="center">
@@ -17,7 +17,8 @@
         </p>
         
         <?php
-
+        $peliculas;
+        $mes;
         $meses=[
             "enero"=>9,
             "febrero"=>12,
@@ -25,7 +26,13 @@
             "abril"=>17
         ];
 
+        foreach($meses as $mes=>$peliculas){
 
+            if($peliculas>0){
+
+                echo "Has visto ".$peliculas." películas el mes de ".$mes."<br>".PHP_EOL;
+            }
+        }
 
         
             

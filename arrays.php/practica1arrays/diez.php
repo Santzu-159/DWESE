@@ -11,18 +11,56 @@
     <div class= "container m-5" align ="center">
         <h4 class='text-center'>Ejercicio 10</h4>
         <p class='text-center'>
-        Mostrar por pantalla el siguiente fragmento html con una sentencia PHP:<br>
-        <xmp><a href= "/arbol/prueba.php" class="prueba" onmouseOver="status='hola';
-        return trae;">pruebade\enlace</a></xmp>
+        Tenemos el array siguiente:<br>
+        “Luis”, “Ana”, “Lucas”, “Zacarias”, “Tomas”, “Juan”, “Ginesa”, “Oscar”<br>
+        Mustra el array resultante al aplicarle al anterior sort(), rsort(), asort(), arsort()<br>
+
         </p>
-
-        <?php
-            echo "Resultado: <br>";
-            echo htmlspecialchars("<a href= \"/arbol/prueba.php\" class=\"prueba\" onmouseOver=\"status='hola';
-            return trae;\">pruebade\enlace</a>");
-
-
         
+        <?php
+
+            $personas=[
+                "Luis",
+                "Ana",
+                "Lucas",
+                "Zacarias",
+                "Tomas",
+                "Juan",
+                "Ginesa",
+                "Oscar"
+            ];
+
+
+        echo "<b>Array original</b>: ".PHP_EOL;
+        print_r($personas);
+        echo "<br>".PHP_EOL;
+
+        $sortPersona = $personas;
+        sort($sortPersona);
+        echo "<b>Array con sort</b>: ".PHP_EOL;
+        print_r($sortPersona);
+        echo "<br>".PHP_EOL;
+
+        $rsortPersona = $personas;
+        rsort($rsortPersona);
+        echo "<b>Array con rsort</b>: ".PHP_EOL;
+        print_r($rsortPersona);
+        echo "<br>".PHP_EOL;
+
+        $asortPersona = $personas;
+        sort($asortPersona);
+        echo "<b>Array con asort</b>: ".PHP_EOL;
+        print_r($asortPersona);
+        echo "<br>".PHP_EOL;
+
+        $arsortPersona = $personas;
+        sort($arsortPersona);
+        echo "<b>Array con arsort</b>: ".PHP_EOL;
+        print_r($arsortPersona);
+        echo "<br>".PHP_EOL;
+
+
+
         ?>
     </div>
 </body>

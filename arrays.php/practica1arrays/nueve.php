@@ -47,7 +47,7 @@
                     </p>
         
         <?php
-
+            $totalStock =0;
             $articulos=[
                 "articulo1"=>[
                     "nombre"=>"Bombilla",
@@ -75,7 +75,7 @@
                 ]
             ];
 
-            echo "<br><table style="border:1px black solid">".PHP_EOL;
+            echo "<br><table border='1px' border-color='black'>".PHP_EOL;
             echo "<tr>".PHP_EOL.
             "<td></td>".PHP_EOL.
             "<td>Nombre</td>".PHP_EOL.
@@ -86,17 +86,59 @@
 
 
             do{
-                
-               
+                echo "<tr>".PHP_EOL;
+                echo "<td>".key($articulos)."</td>".PHP_EOL;
+                $auxArticulos = current($articulos);
+                $totalStock = $totalStock+$auxArticulos['stock']; 
                 do{
+                    echo "<td>".current($auxArticulos)."</td>".PHP_EOL;
 
-
-
-
-                }while(next($articulos));
+                }while(next($auxArticulos));
+                echo "</tr>";
 
             }while(next($articulos));
+            echo "</table>";
 
+
+            echo "<br>Total de Stock: ".$totalStock."<br>".PHP_EOL;
+
+            reset($articulos);
+            $totalStock = 0;
+
+
+
+            echo "<br><table border='1px' border-color='black'>".PHP_EOL;
+            echo "<tr>".PHP_EOL.
+            "<td></td>".PHP_EOL.
+            "<td>Nombre</td>".PHP_EOL.
+            "<td>PVP (€)</td>".PHP_EOL.
+            "<td>Tipo</td>".PHP_EOL.
+            "<td>Stock</td>".PHP_EOL.
+            "</tr>".PHP_EOL;
+
+
+            do{
+                $auxArticulos = current($articulos);
+
+                if($auxArticulos['tipo']=='Informatica'){
+
+                
+                echo "<tr>".PHP_EOL;
+                echo "<td>".key($articulos)."</td>".PHP_EOL;
+                
+                $totalStock = $totalStock+$auxArticulos['stock']; 
+                do{
+                    echo "<td>".current($auxArticulos)."</td>".PHP_EOL;
+
+                }while(next($auxArticulos));
+                echo "</tr>";
+
+            }
+
+            }while(next($articulos));
+            echo "</table>";
+
+            echo "<br>Total de Stock: ".$totalStock."<br>".PHP_EOL;
 
         ?>
     </div>

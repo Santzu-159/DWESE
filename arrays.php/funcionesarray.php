@@ -128,7 +128,6 @@
             unset($mat1[1]); //eliminar elementos del array
             print_r($mat1);
 
-
         ?>
     </div>
     

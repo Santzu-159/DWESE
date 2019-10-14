@@ -25,10 +25,28 @@
         <?php
             
             $tabla=[
-                fuerte =>["Rojo:FF0000","Verde:00FF00","Azul: 0000FF"],
-                suave =>["Rosa:FE9ABC","Amarillo:FDF189","Malva:BC8F8F"]
+                "Colores fuertes" =>["Rojo:FF0000","Verde:00FF00","Azul: 0000FF"],
+                "Colores suaves" =>["Rosa:FE9ABC","Amarillo:FDF189","Malva:BC8F8F"]
             ];
 
+            echo "<br><table border='1px' border-color='black'>".PHP_EOL;
+           
+
+            do{
+                echo "<tr>".PHP_EOL;
+                echo "<td>".key($tabla)."</td>".PHP_EOL;
+                $auxTabla = current($tabla);
+                
+                do{
+                    
+                    $color = substr(current($auxTabla),-6);
+                    echo "<td bgcolor=".$color.">".current($auxTabla)."</td>".PHP_EOL;
+
+                }while(next($auxTabla));
+                echo "</tr>";
+
+            }while(next($tabla));
+            echo "</table>";
 
 
         ?>

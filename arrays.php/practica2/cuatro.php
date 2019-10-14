@@ -25,11 +25,48 @@
         <?php
             
             $tabla=[
-                fuerte =>["Rojo:FF0000","Verde:00FF00","Azul: 0000FF"],
-                suave =>["Rosa:FE9ABC","Amarillo:FDF189","Malva:BC8F8F"]
+                "Colores fuertes" =>["FF0000","00FF00","0000FF"],
+                "Colores suaves" =>["FE9ABC","FDF189","BC8F8F"]
             ];
+            
+            $color = "FF88CC";
+            $color2= "FF0000";
+            $interruptor = false;
+            $interruptor2 = false;
+
+            do{
+                if(in_array($color,current($tabla))){
+
+                    $interruptor = true;
+                   
+                }else{
+                    $interruptor = false;
+                }
 
 
+                if(in_array($color2,current($tabla))){
+
+                    $interruptor2 = true;                
+
+                }else{
+                    $interruptor2 = false;
+                }
+            }while(next($tabla));    
+
+
+            if($interruptor == true){
+
+                echo "Se ha encontrado el color: ".$color;
+            }else{
+                echo "No se ha encontrado el color: ".$color;
+            }
+
+            if($interruptor2 == true){
+
+                echo "<br>Se ha encontrado el color: ".$color2;
+            }else{
+                echo "<br>No se ha encontrado el color: ".$color2;
+            }
 
         ?>
     </div>

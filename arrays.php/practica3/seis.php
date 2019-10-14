@@ -11,13 +11,24 @@
     <div class= "container m-5" align ="center">
         <h4 class='text-center'>Ejercicio 6</h4>
         <p class='text-center'>
-
-
+        Realizar un dado virtual en PHP mediante el uso de arrays. Cada vez que se<br>
+        refresque la pantalla, deberá verse un número distinto al azar entre 1 y 6<br>
         </p>
         
         <?php
             
+            $dado=[
+                "uno",
+                "dos",
+                "tres",
+                "cuatro",
+                "cinco",
+                "seis"
+            ];
             
+
+            shuffle($dado);
+            print($dado[0]);
         
 
         ?>

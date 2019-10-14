@@ -12,13 +12,36 @@
         <h4 class='text-center'>Ejercicio 3</h4>
         <p class='text-center'>
 
-
+            Definir un array que tenga como valor diez títulos de películas. Utilizar la<br>
+            función sort para ordenarlos de forma alfabética y mostrarlo por pantalla con<br>
+            print_r.<br>
         </p>
         
         <?php
+            $peliculas=[
+
+                    "Iron Man",
+                    "Como Entrenar a tu Dragón",
+                    "Big Hero",
+                    "Solo en Casa",
+                    "Pesadilla en Elm Street",
+                    "Proyecto Warren",
+                    "Deadpool",
+                    "Vaiana",
+                    "Aladdin",
+                    "Maléfica"
+            ];
+
+            echo "<b>Array original: </b><br>".PHP_EOL;
+            print_r($peliculas);
             
-            
-        
+            $sortPelis = $peliculas;
+            sort($sortPelis);
+            echo "<br><b>Array ordenado: </b><br>".PHP_EOL;
+            print_r($sortPelis);
+            echo "<br>".PHP_EOL;
+
+  
 
         ?>
     </div>

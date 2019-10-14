@@ -12,13 +12,26 @@
         <h4 class='text-center'>Ejercicio 2</h4>
         <p class='text-center'>
 
+            Definir un array que tenga claves de un caracter representando cada letra del<br>
+            alfabeto desde la a hasta la f. En la misma definición, asignarle a cada clave un<br>
+            nombre propio que comience con esa letra. Ejemplo array (‘a’=>’Amanda’);<br>
+            Mostrar el resultado por pantalla con var_dump.<br>
 
         </p>
         
         <?php
             
+            $nombres=[
+                    "a" => "Amanda",
+                    "b" => "Benito",
+                    "c" => "Carla",
+                    "d" => "Dania",
+                    "e" => "Enrique",
+                    "f" => "Francisco"
+            ];
             
-        
+
+        print_r(var_dump($nombres));
 
         ?>
     </div>

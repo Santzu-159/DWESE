@@ -11,12 +11,25 @@
     <div class= "container m-5" align ="center">
         <h4 class='text-center'>Ejercicio 12</h4>
         <p class='text-center'>
+            Idem anterior pero encontrar el mínimo.<br>
 
 
         </p>
         
         <?php
-            
+            $numeros=[1,2,3,4,5,80,1205,8,13,-7];
+            $menorNum=PHP_INT_MAX;//lo inicializamos al valor mas alto (antes lo inicialice a 0 y era ese el valor que me salia ya que era el mas bajo)
+        
+            for($i=0;$i<count($numeros);$i++){
+
+                if($menorNum>$numeros[$i]){
+
+                    $menorNum=$numeros[$i];
+                }
+            }
+            echo "El array es: ";
+            print_r($numeros);
+            echo " y el número ".$menorNum." es el menor de todos.";
             
         
 

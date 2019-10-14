@@ -19,11 +19,8 @@
         <?php
             $numeros=[1,2,3,4,5,6,7,8,9,10];
 
-            print_r("La suma de los numeros del array $numeros es: ".array_sum($numeros));
-
-
-            
-        
+            $suma =array_sum($numeros);
+            print_r("La suma de los numeros del array \$numeros es: ".$suma);
 
         ?>
     </div>

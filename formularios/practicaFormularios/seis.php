@@ -20,12 +20,6 @@
                 //devuelve un array numerico así que puedo usar el for
                 for($i=0;$i<count($aficiones);$i++){
                     echo $aficiones[$i];
-
-                    if($i==count($aficiones)-1){
-                        echo ".";
-                    }else if($i==count($aficiones)-2){
-                        echo " y ";
-                    }
                 }
                 echo "</p>".PHP_EOL;
                 echo "<br>".PHP_EOL;

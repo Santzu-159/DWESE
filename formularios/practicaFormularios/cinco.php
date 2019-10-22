@@ -69,15 +69,10 @@
                 
                 for($i=0;$i<count($aficion);$i++){
                     echo $aficion[$i];
-                    //formato de la salida
-                    if($i==count($aficion)-1){
-                        echo ".";
-                    }else if($i==count($aficion)-2){
-                        echo " y ";
-                    }
                 }
                 echo "</p>".PHP_EOL;
                 echo "<br>".PHP_EOL;
+                
         } else{
             echo "<p class='text-center'>Por favor, selecciona al menos una afición.</p>".PHP_EOL;
         }

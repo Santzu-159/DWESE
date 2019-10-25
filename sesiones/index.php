@@ -15,30 +15,32 @@
 
 <body style='background-color:aqua'>
     <div class="container mt-5">
-        <?php
-            if(isset($_POST['btnEnviar'])){
-                //procesamos el formulario
-                $usuVaildo="admin";
-                $passValida="admin1234";
+    <?php
+        if(isset($_POST['btnEnviar'])){
 
-                $nom=$_POST['nombre'];
-                $pass=$_POST['password'];
+            $usuarios=[
+                "admin"=> "passadmin",
+                "usuario"=>"passusu",
+                "juan" => "passjuan",
+                "pedro" => "passpedro",
+                "antonia" => "passantonia"
+            ];
 
-                if($nom == $usuVaildo && $pass == $passValida){
-                    //login correcto
-                    $_SESSION['usuario']=$nom;
-                    header("Location:portal.php"); //entramos directamente a la pag portal
+            $nomUsu=trim($_POST['nombre']);
+            $passUsu=trim($_POST['password']);
 
-                }else{
-                    //login incorrecto
-                    $_SESSION['error']="Error. El nombre de usuario y/o la contraseña son incorrectos.";
-                    header("Location:index.php");
-                }
-       
+            if(isset($usuarios[$nomUsu]) && $usuarios[$nomUsu]==$passUsu){
+                
+                $_SESSION['usuario']=$nomUsu;
+                header('Location:portal.php');
             }else{
-                //pintamos el formulario
-
-        ?>    
+                
+                $_SESSION['error']="El nombre de usuario o la contraseña son Incorrectos!!";
+                header('Location:index.php');
+            }
+        }else{
+        
+    ?>  
         <form name='login' action='index.php' method='POST'>
             <table border='3' bordercolor='red' cellspacing='5' align='center'>
                 <tr>
@@ -69,6 +71,7 @@
                                 <td colspan='2' align='center'>
                                     <input type='submit' value='Login' class='btn btn-info' name='btnEnviar' />
                                     <input type='reset' value='Limpiar' class='btn btn-warning' />
+                                    <a href='#' class='btn btn-success'>Coockies</a>
                                 </td>
                             </tr>
                         </table>

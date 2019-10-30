@@ -37,7 +37,7 @@
     <div class="container mt-5">
         <h3 class="text-center bg-primary">Subir Archivos</h3>
         <form name="sf" action="<?php echo $_SERVER['PHP_SELF'];?>" ENCTYPE="multipart/form-data" method="POST">
-        <!-- El ENCTYPE es obligatorio ya que si no, el formulario no sube los archivos -->
+        <!-- El ENCTY 
 
             <input type="text" name ="nombre" placeholder="Tu nombre"/><br>
 

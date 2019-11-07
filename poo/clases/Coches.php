@@ -14,7 +14,7 @@ class Coches{
 
     public function __construct(){ //dos barras bajas
 
-        if(func_num_args()==1){
+        if(func_num_args()==1){ //funcion para saber cuantos arg se le pasan
             $this->matricula=func_get_arg(0);
         }
 

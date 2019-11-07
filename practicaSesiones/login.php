@@ -1,5 +1,16 @@
 <?php
     session_start();
+    if(isset($_COOKIE['nomCookie'])){
+        $user = $_COOKIE['nomCookie'];
+    }else{
+        $user ="";
+    }
+
+    if(isset($_COOKIE['contrasenia'])){
+        $contr = $_COOKIE['contrasenia'];
+    }else{
+        $contr ="";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,19 +47,91 @@
                 ];
 
                 $usuNom=strtolower(trim($_POST['nombre'])); //convertimos la cadena en minusculas y quitamos los espacios para asegurarnos
-                $usupass=trim($_POST['pass']); //quitamos los posibles espacios
+                $usuPass=trim($_POST['password']); //quitamos los posibles espacios
 
-                if()
+                if(isset($usuarios[$usuNom]) && $usuarios[$usuNom]["contrasenia"]==$usuPass){
 
+                    if(isset($_POST['recordar'])){
 
+                        setcookie('nomCookie',$usuNom, time()+365*24*60*60);
+                        setcookie('contrasenia',$usuPass, time()+365*24*60*60);
+                    }
 
+                    $_SESSION["usuario"] = [
 
+                        "nombre" => $usuNom,
+                        "tipo" => $usuarios[$usuNom]['tipo']
 
+                    ];
 
-            }
-
+                    header('Location:menu.php');
+                }else{
+                    $_SESSION['error']="El nombre de usuario o la contraseña son Incorrectos!!";
+                    header('Location:login.php');
+                }
+            }else{
+    
+            
         ?>
+            <div class="container mt-5">
+            <form name='login' action='login.php' method='POST'>
+                <table border='3' bordercolor='red' cellspacing='5' align='center'>
+                    <tr>
+                        <td>
+                            <table cellspacing='5' cellpadding='5' align='center'>
+                                <tr>
+                                    <td colspan='2' bgcolor='silver' align='center'>
+                                        Login
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Nombre:</b>
+                                    </td>
+                                    <td>
+                                        <input type='text' name='nombre' placeholder='Nombre' class='form-control' value= '<?php echo $user ?>' required />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Password:</b>
+                                    </td>
+                                    <td>
+                                        <input type='password' name='password' class='form-control' value= '<?php echo $contr ?>' required />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="checkbox" name ="recordar"/> Recordar usuario y contraseña
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan='2' align='center'>
+                                        <input type='submit' value='Login' class='btn btn-info' name='btnEnviar' />
 
+                                        <input type='reset' value='Limpiar' class='btn btn-warning' />
 
-    </body>
-</html>
+                                        <a href='reset.php' style='text-decoration:none'>
+                                            <input type='button' value='Resetcookies' style=' '>&nbsp;&nbsp;</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <?php
+                if(isset($_SESSION['error'])){
+            
+                    echo "<div class='container mt-5'>".PHP_EOL;
+                    echo "<h2 class='text-center text-danger'>".$_SESSION['error']."</h2>".PHP_EOL;
+                    echo "</div>".PHP_EOL;
+                    unset($_SESSION['error']);
+                }
+            ?>
+                </div>
+            <?php } ?>
+        </body>
+    
+    </html>

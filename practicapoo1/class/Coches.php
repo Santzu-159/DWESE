@@ -20,14 +20,14 @@
                 return $interruptor;
         }
 
-        function __construct($marca,$modelo,$matricula,$kms,$precio){
-             if($this->comprobarMatricula($matricula)){   
+        function __construct($marc,$mo,$mat,$klms,$p){
+             if($this->comprobarMatricula($mat)){   
                 self::$cant++;
-                $this->marca =$marca;
-                $this->modelo =$modelo;
-                $this->matricula = $matricula;
-                $this->kms=$kms;
-                $this->precio=$precio;
+                $this->marca =$marc;
+                $this->modelo =$mo;
+                $this->matricula = $mat;
+                $this->kms=$klms;
+                $this->precio=$p;
              }else{
                      echo "<div class='container mt-3 text-center bg-danger'>
                      <b>ERROR --> </b> La matricula debe de tener el siguiente formato: nnnn-lll</div>";
@@ -171,15 +171,4 @@
         }
 
         
-
-       /* public function venderCoche($matricula){
-                if(!isset($matricula){
-                         echo "<div class='container mt-3 text-center bg-danger'>
-                     <b>ERROR --> </b> La matricula no existe.</div>";
-                }else{
-                        echo "chupame un pie";
-                }
-
-        }*/
-
     }

@@ -7,7 +7,7 @@
         public function __construct($marc,$mo,$mat,$klms,$pv,$fv){
             parent::__construct($marc,$mo,$mat,$klms,$pv);
             $this->fecha_venta=$fv;
-            $this->precio_venta=$pv*(1-(parent::getDescuento()/100));
+            $this->precio_venta=round($pv*0.95);//(1-(parent::getDescuento()/100));
         }
 
 
@@ -57,9 +57,9 @@
                 <b>Modelo: </b>".parent::getModelo()."<br>
                 <b>Matricula: </b>".parent::getMatricula()."<br>
                 <b>Kilómetros: </b>".parent::getkms()."<br>
-                <b>Precio Inicial: </b>".parent::getPrecio()."<b>euros</b><br>
-                <b>Precio Inicial: </b>{$this->precio_venta}<b>euros</b><br>
-                <b>Precio Inicial: </b>{$this->fecha_venta}<b>euros</b>
+                <b>Precio Inicial: </b>".parent::getPrecio()."<b> euros</b><br>
+                <b>Precio Final: </b>{$this->precio_venta}<b> euros</b><br>
+                <b>Fecha de venta: </b>{$this->fecha_venta}<b> euros</b>
                 </div><br><hr><br>";
             }
 

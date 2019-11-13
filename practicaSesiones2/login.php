@@ -1,4 +1,4 @@
-<?php
+<?php //eliminar cookies
     session_start();
     if(isset($_COOKIE['nomCookie'])){
         $user = $_COOKIE['nomCookie'];
@@ -11,6 +11,27 @@
     }else{
         $contr ="";
     }
+
+    function buscarUsu($usuNom,$usuPass){
+
+        $file="usuarios.txt";
+        $fp = fopen($file,"r");
+
+        while(!feof($fp)){ //feof --> sigue ejecutandose hasta que no haya un salto de linea
+        
+            $texto=explode("?",fgets($fp)); //leemos la linea actual y separamos los datos con ? y lo guardamos en $texto
+            $aux=hash("sha256",$usuPass);
+            if($texto[0]==$usuNom && trim($texto[2])==$aux){
+                fclose($fp);
+                return true;
+            }
+    
+        }
+        fclose($fp);
+        return false;
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,32 +45,14 @@
         <title>Login</title>
     </head>
 
-    <body style ='background-color:aqua'>
+    <body class="bg-dark">
         <?php
             if(isset($_POST['btnEnviar'])){
-
-                $usuarios=[
-                    "admin" => [ 
-                        "tipo"=>"administrador",
-                        "contrasenia"=>"admin"
-                    ],
-
-                    "avanzado" =>[
-                        "tipo"=>"avanzado",
-                        "contrasenia"=>"1234"
-                    ],
-
-                    "normal" =>[
-                        "tipo"=>"normal",
-                        "contrasenia"=>"asdf"
-                    ]
-
-                ];
 
                 $usuNom=strtolower(trim($_POST['nombre'])); //convertimos la cadena en minusculas y quitamos los espacios para asegurarnos
                 $usuPass=trim($_POST['password']); //quitamos los posibles espacios
 
-                if(isset($usuarios[$usuNom]) && $usuarios[$usuNom]["contrasenia"]==$usuPass){
+                if(buscarUsu($usuNom,$usuPass)){
 
                     if(isset($_POST['recordar'])){
 
@@ -57,31 +60,28 @@
                         setcookie('contrasenia',$usuPass, time()+365*24*60*60);
                     }
 
-                    $_SESSION["usuario"] = [
+                    $_SESSION['usuario']=$usuNom;
 
-                        "nombre" => $usuNom,
-                        "tipo" => $usuarios[$usuNom]['tipo']
-
-                    ];
-
-                    header('Location:menu.php');
+                    header('Location:perfil.php');
+                    die();
                 }else{
-                    $_SESSION['error']="El nombre de usuario o la contraseña son Incorrectos!!";
+                    $_SESSION['error']="Los datos son incorrectos.";
                     header('Location:login.php');
-                }
+                } 
+
             }else{
     
             
         ?>
             <div class="container mt-5">
             <form name='login' action='login.php' method='POST'>
-                <table border='3' bordercolor='red' cellspacing='5' align='center'>
+                <table class="bg-white rounded" align='center'>
                     <tr>
                         <td>
                             <table cellspacing='5' cellpadding='5' align='center'>
                                 <tr>
-                                    <td colspan='2' bgcolor='silver' align='center'>
-                                        Login
+                                    <td colspan='2' align='center' class='bg-info'>
+                                        <h4><b>Login</b></h4>
                                     </td>
                                 </tr>
                                 <tr>
@@ -108,13 +108,22 @@
                                 </tr>
                                 <tr>
                                     <td colspan='2' align='center'>
-                                        <input type='submit' value='Login' class='btn btn-info' name='btnEnviar' />
+                                        <input type='submit' value='Login' class='btn btn-secondary' name='btnEnviar' />
 
-                                        <input type='reset' value='Borrar' class='btn btn-warning' />
+                                        <a href='registrar.php' style='text-decoration:none'>
+                                            <input type='' value='Registrar' class='btn btn-danger' name='btnRegistro' />
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan='2' align='center'>
+                                        <input type='reset' value='Borrar Campos' class='btn btn-warning' />
 
                                         <a href='reset.php' style='text-decoration:none'>
-                                            <input type='button'  class='btn btn-success' value='Borrar Cookies'>&nbsp;&nbsp;</a>
+                                            <input type='button'  class='btn btn-success' value='Borrar Cookies'>&nbsp;&nbsp;
+                                        </a>
                                     </td>
+
                                 </tr>
                             </table>
                         </td>
@@ -132,6 +141,5 @@
             ?>
                 </div>
             <?php } ?>
-        </body>
-    
+        </body>   
     </html>

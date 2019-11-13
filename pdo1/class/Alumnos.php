@@ -32,7 +32,21 @@ Class Alumnos{
     }
     //UPDATE--------------------------
     public function edit(){
-        
+        $edit="update alumnos set nomAl=:n, apeAl=:a, mail=:m where idAl=:id";
+        $stmt=$this->llave->prepare($edit);
+
+        try{
+            $stmt->execute([
+                ':n'=>$this->nomAl,
+                ':a'=>$this->apeAl,
+                ':m'=>$this->mail,
+                ':id'=>$this->idAl
+            ]);
+
+        }catch(PDOEXception $ex){
+            die("Error al editar el alumno <br>".$ex);
+
+        }
     }
     //DELETE--------------------------
     public function delete(){
@@ -64,6 +78,24 @@ Class Alumnos{
             die("Error al crear el alumno!! ".$ex);
         }
     } 
+
+    //------------------------------
+
+    public function getAlumno(){
+        $consulta="select * from alumnos where idAl=:id";
+        $stmt=$this->llave->prepare($consulta);
+        try{
+            $stmt->execute([ //array asociativo
+
+                ':id'=>$this->idAl
+            ]);
+
+        }catch(PDOException $ex){
+            die("Error al recuperar el alumno: ".$ex);
+        }
+        $alumno=$stmt->fetch(PDO::FETCH_OBJ);//usamos fetch por que no necesitamos recorrer todo el array asoc
+        return $alumno;
+    }
     //--------------------------------
     public function existeMail(){
         $consulta="select * from alumnos where mail=:m";

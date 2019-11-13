@@ -23,9 +23,9 @@
         <div class="container mt-3">
         <?php
         if(isset($_SESSION['mensaje'])){
-            echo "<p class='mt-3 mb-3 text-danger'>".PHP_EOL;
+            echo "<h2 class='mt-3 mb-3 text-warning text-center'>".PHP_EOL;
             echo $_SESSION['mensaje'].PHP_EOL;
-            echo "</p>".PHP_EOL;
+            echo "</h2>".PHP_EOL;
             unset($_SESSION['mensaje']);
         }
     ?>
@@ -55,7 +55,7 @@
                                 <form name='as' action='balumno.php' method='post' style='display:inline'>
 
                                     <input type='hidden' name='id' value='{$alumno->idAl}'>
-                                    <a href='ealumnos.php?id={$alumno->idAl}' class='btn btn-info'>Editar</a>&nbsp;
+                                    <a href='ealumno.php?id={$alumno->idAl}' class='btn btn-info'>Editar</a>&nbsp;
 
                                     <input type='submit'value='Borrar' class='btn btn-danger'>
 

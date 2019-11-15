@@ -29,4 +29,8 @@ create table matriculas(
 insert into alumnos(nomAl, apeAl, mail) values('Juan', 'Fernandez Perez', 'correo1@mail');
 insert into alumnos(nomAl, apeAl, mail) values('Ana', 'Gil Perez', 'correo2@mail');
 insert into alumnos(nomAl, apeAl, mail) values('Lucas', 'Arango Perez', 'correo3@mail');
-insert into alumnos(nomAl, apeAl, mail) values('Ines', 'Fernandez Sanz', 'correo5@mail');
+insert into alumnos(nomAl, apeAl, mail) values('Antonia', 'Fernandez Sanz', 'correo5@mail');
+
+insert into modulos(nomMod,horasSem) values ('DWESE',8);
+insert into modulos(nomMod,horasSem) values ('HLC',3);
+insert into modulos(nomMod,horasSem) values ('DWECL',6);

@@ -25,12 +25,27 @@ create table matriculas(
     constraint fk_mat_al foreign key(al) references alumnos(idAl) on delete cascade on update cascade,
     constraint fk_mat_mod foreign key(modulo) references modulos(idMod) on delete cascade on update cascade
 );
--- Algunos Datos
+-- Algunos Alumnos
 insert into alumnos(nomAl, apeAl, mail) values('Juan', 'Fernandez Perez', 'correo1@mail');
 insert into alumnos(nomAl, apeAl, mail) values('Ana', 'Gil Perez', 'correo2@mail');
 insert into alumnos(nomAl, apeAl, mail) values('Lucas', 'Arango Perez', 'correo3@mail');
 insert into alumnos(nomAl, apeAl, mail) values('Antonia', 'Fernandez Sanz', 'correo5@mail');
 
+-- Algunos Modulos
 insert into modulos(nomMod,horasSem) values ('DWESE',8);
 insert into modulos(nomMod,horasSem) values ('HLC',3);
 insert into modulos(nomMod,horasSem) values ('DWECL',6);
+
+-- Algunas Matriculas
+
+insert into matriculas values(1,1,0);
+insert into matriculas values(1,2,0);
+insert into matriculas values(1,3,0);
+insert into matriculas values(2,1,0);
+insert into matriculas values(2,2,0);
+insert into matriculas values(2,3,0);
+insert into matriculas values(3,1,0);
+insert into matriculas values(3,2,0);
+insert into matriculas values(3,3,0);
+insert into matriculas values(4,1,0);
+insert into matriculas values(4,2,0);

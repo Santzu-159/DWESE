@@ -34,11 +34,19 @@ public function create(){
 }
 
 //------------------- update
-
+                    //------- parametrizada
 public function update(){
-
-
-
+    $update ="update modulos set nomMod=:n, horasSem=:h where idMod=:i";
+    $stmt=$this->conector->prepare($update);
+    try{
+        $stmt->execute([
+            ":n"=>$this->nomMod,
+            ":h"=>$this->horasSem,
+            ":i"=>$this->idMod
+        ]);
+    }catch(PDOException $ex){
+        die("Error al actualizar el modulo ".$ex);
+    }
 }
 
 //------------------- read
@@ -56,7 +64,22 @@ public function read(){
         $modulos=$stmt->fetchAll(PDO::FETCH_OBJ);
         return $modulos;
 }
+//--------------------------------------------------
+public function getModulo($id){
+    $consulta = "select * from modulos where idMod=:i";
+    $stmt = $this->conector->prepare($consulta);
+    try{
+        $stmt->execute([
+            ":i"=>$id
+        ]);
+    }catch(PDOException $ex){
 
+        die('Error al recuperar los datos del modulo '.$ex);
+    }
+    //devolvemos todos los datos del modulo en cuestion
+    $modulo=$stmt->fetch(PDO::FETCH_OBJ);
+    return $modulo;
+}
 //------------------- delete
 
 public function delete(){

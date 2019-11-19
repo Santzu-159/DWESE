@@ -53,7 +53,7 @@
                                     echo"<form name='borrar' action='bmatricula.php' method='post' style='display:inline'>".PHP_EOL;
                                         echo"<input type='hidden' name='al' value='{$fila->al}'>".PHP_EOL;
                                         echo"<input type='hidden' name='modulo' value='{$fila->modulo}'>".PHP_EOL;
-                                        echo"<a href='mmatricula.php?id=#' class='btn btn-info'>Editar</a>&nbsp;".PHP_EOL;
+                                        echo"<a href='mmatricula.php?al={$fila->al}&mod={$fila->modulo}' class='btn btn-info'>Editar</a>&nbsp;".PHP_EOL;
                                         echo"<input type='submit' value='Borrar' class='btn btn-danger'>".PHP_EOL;
                                     echo"</form>".PHP_EOL;
                                 echo"</td>".PHP_EOL;

@@ -22,7 +22,20 @@
 
         //------------ CRUD
         //--------------------------------------------- create
-        public function create(){}
+        public function create(){
+            $c="insert into matriculas values(:a,:m,:n)";
+            $stmt = $this->conector->prepare($c);
+            try{
+                $stmt->execute([
+                    ':a'=>$this->al,
+                    ':m'=>$this->modulo,
+                    ':n'=>$this->notaFinal
+                ]);
+
+            }catch(PDOException $ex){
+                die("Error al matricular el alumno. ".$ex);
+            }
+        }
 
         //--------------------------------------------- read
         public function read(){
@@ -38,7 +51,19 @@
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
         //--------------------------------------------- update
-        public function update(){}
+        public function update(){
+            $u="update matriculas set al=:a, modulo=:m, notaFinal=:n where al=:a AND modulo=:m";
+            $stmt=$this->conector->prepare($u);
+            try{
+                $stmt->execute([
+                    ":a"=>$this->al,
+                    ":m"=>$this->modulo,
+                    ":n"=>$this->notaFinal
+                ]);
+            }catch(PDOException $ex){
+                die("No se ha podido actualizar la matricula. ".$ex);
+            }
+        }
 
         //--------------------------------------------- delete
         public function delete(){
@@ -135,5 +160,47 @@
                 $this->modulo = $modulo;
 
                 return $this;
+        }
+
+        //----------------------------------- duplicado
+        
+        public function duplicado($a,$m){
+            $consulta= "select * from matriculas where al=:a AND modulo=:m";
+            $stmt=$this->conector->prepare($consulta);
+            try{
+                $stmt->execute([
+                    ':a'=>$a,
+                    ':m'=>$m
+                ]);
+
+            }catch(PDOException $ex){
+                die("error al comprobar matricula ".$ex);
+            }
+            $cont=0;
+            while($fila=$stmt->fetch()){
+                $cont++;
+            }
+            return($cont!=0);
+
+            /*if(mysql_errno() == 1062) {
+                echo "El alumno ya se encuentra matriculado.";
+                header("Location:cmatriculas.php");
+            }*/
+        }
+
+        public function getMatricula($a,$m){
+            $consulta = "select al,modulo,nomAl,apeAl,nomMod,notaFinal from alumnos,modulos,matriculas where idAl=al AND modulo=idMod AND al=:a AND modulo=:m";
+            $stmt=$this->conector->prepare($consulta);
+            try{   
+                $stmt->execute([
+                    ':a'=>$this->a,
+                    ':m'=>$this->m
+                ]);
+
+            }catch(PDOException $ex){
+                die("Error al devolver matricula");
+            }
+            $fila=$stmt->fetch(PDO::FETCH_OBJ);
+            return $fila;
         }
     }

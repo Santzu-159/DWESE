@@ -52,7 +52,7 @@
         }
         //--------------------------------------------- update
         public function update(){
-            $u="update matriculas set al=:a, modulo=:m, notaFinal=:n where al=:a AND modulo=:m";
+            $u="update matriculas set notaFinal=:n where al=:a AND modulo=:m";
             $stmt=$this->conector->prepare($u);
             try{
                 $stmt->execute([

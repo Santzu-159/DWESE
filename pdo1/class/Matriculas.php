@@ -38,8 +38,8 @@
         }
 
         //--------------------------------------------- read
-        public function read(){
-            $consulta = "select al,modulo,nomAl,apeAl,nomMod,notaFinal from alumnos,modulos,matriculas where idAl=al AND modulo=idMod order by apeAl,nomMod";
+        public function read($p,$c){
+            $consulta = "select al,modulo,nomAl,apeAl,nomMod,notaFinal from alumnos,modulos,matriculas where idAl=al AND modulo=idMod order by apeAl,nomMod limit $p,$c";
             $stmt=$this->conector->prepare($consulta);
             try{
                 $stmt->execute();
@@ -203,4 +203,27 @@
             $fila=$stmt->fetch(PDO::FETCH_OBJ);
             return $fila;
         }
-    }
+    
+
+    //------------------------------------------------ total registros para la paginacion
+
+        public function getTotal(){
+            $consulta="select * from matriculas";
+            $stmt=$this->conector->prepare($consulta);
+            try{
+                $stmt->execute();
+
+            }catch(PDOException $ex){
+                die("Error al contar registros ".$ex);
+            }
+            $cont=0;
+            while($fila=$stmt->fetch()){
+                $cont++;
+            }
+            return $cont;
+        }
+
+
+
+
+}

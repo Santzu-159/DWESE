@@ -55,7 +55,7 @@ function matricular($a, $m, $n){
            $al=$_POST['al'];
            $mod=$_POST['mod'];
            $nota=$_POST['nota'];
-            if ($matricula->existeMatricula($al, $mod)) {
+            if ($matricula->getMatricula($al, $mod)) {
                 error("El alumno ya está Matriculado de ese Módulo!!!");
                 $llave=null;
             }

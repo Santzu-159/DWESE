@@ -9,7 +9,25 @@ $conexion=new Conexion();
 $llave=$conexion->getConector();
 
 $matricula=new Matriculas($llave);
-$filas=$matricula->read();
+
+$totalRegistros=$matricula->getTotal();
+$paginacion=4; //cuantos registros vamos a mostrar en cada pagina
+if($totalRegistros%$paginacion == 0){//si el modulo es 0 (resto)
+
+    $totalPaginas = intdiv($totalRegistros,$paginacion); //el total de las paginas es la division entera
+
+}else{
+
+    $totalPaginas = intdiv($totalRegistros, $paginacion)+1; //el total de las paginas es la division +1
+}
+
+if(!isset($_GET['pag'])){
+    $inicio=0;
+}else{
+    $inicio=$paginacion*($_GET['pag'])-1; //los registros que queremos mostrar * el numero de páginas -1
+}
+$filas=$matricula->read($inicio,$paginacion);//total de paginas
+
 
 ?>
 <html lang="es">
@@ -24,7 +42,7 @@ $filas=$matricula->read();
 <body style='background-color:salmon'>
     <h3 class='text-center mt-4'>Crud Matriculas</h3>
     <div class="container mt-3">
-        <a href="cmatricula.php" class='btn btn-success mb-3'>Nuevo Matricula</a>
+        <a href="cmatricula.php" class='btn btn-success mb-3'>Nueva Matricula</a>
         <?php
             if(isset($_SESSION['mensaje'])){
                 echo "<p class='mt-3 mb-3 text-primary'>{$_SESSION['mensaje']}</p>";
@@ -63,6 +81,21 @@ $filas=$matricula->read();
                 ?>
             </tbody>
         </table>
+        <!-- PAGINACION -->
+        <div class="container mt-4">
+             <b>Página:&nbsp;</b>
+
+             <?php       
+             for($i=1; $i<=$totalPaginas; $i++){
+
+                 if($i!=$totalPaginas){
+                     echo "<a href='matriculas.php?pag=$i' style='text-decoration:none'>&nbsp;&nbsp;$i&nbsp;&nbsp;|</a>";
+                 }else{
+                    echo "<a href='matriculas.php?pag=$i' style='text-decoration:none'>&nbsp;&nbsp;$i&nbsp;&nbsp;</a>";
+                 }
+             }
+            ?>
+        </div>
     </div>
 </body>
 

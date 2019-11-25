@@ -31,7 +31,7 @@
             error("Ya existe un usuario con ese nombre.");
         }
 
-        $usuario->setNombre($nombre);
+        $usuario->setNombre($nomUsu);
         $usuario->setPass($pass1);
         $usuario->create();
     

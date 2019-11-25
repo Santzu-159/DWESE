@@ -64,7 +64,7 @@
 
         //-------------------------------- FUNCION EXISTE USUARIO
 
-        public function existeUser(){
+        public function existeUser($n){
             $c="select * from usuarios where nombre=:n";
             $stmt=$this->conector->prepare($c);
 

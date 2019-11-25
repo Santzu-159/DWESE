@@ -47,17 +47,6 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-
-                            <?php
-                             //   if(isset($_POST['btnEnviar'])){
-                               //     $nom=$_POST['username'];
-                                //    $pass=$_POST['password'];
-                               //     if(strlen($nom== 0) || strlen($pass)==0){
-                                //        error("Introduce nombre de usuario y pass válidos");
-                                //    }
-                              //  }
-
-                           // ?>
                                 <form id="login-form" action="login.php" method="POST" role="form"
                                     style="display: block;">
                                     <div class="form-group">
@@ -138,15 +127,6 @@
                                             </div>
                                             <input type="text" name="usernameR" id="usernameR" tabindex="1"
                                                 class="form-control" placeholder="Usuario" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <img src="icons/email.png">
-                                            </div>
-                                            <input type="email" name="email" id="email" tabindex="1"
-                                                class="form-control" placeholder="Correo Electrónico" value="">
                                         </div>
                                     </div>
                                     <div class="form-group">

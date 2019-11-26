@@ -58,11 +58,31 @@
         }
 
         public function update(){
-
+            $u="update plataformas set nombre=:n set imagen=:im where id=:i";
+            $stmt=$this->conector->prepare($u);
+            try{
+                $stmt->execute([
+                    ":n"=>$this->nombre,
+                    ":im"=>$this->imagen,
+                    ":i"=>$this->id
+                ]);
+            }catch(PDOException $ex){
+                die("No se ha podido actualizar la plataforma. ".$ex);
+            }
         }
 
+        //--------------------------------------------- delete
         public function delete(){
-
+            $delete = "delete from plataformas where id=:i AND nombre=:n";
+            $stmt=$this->conector->prepare($delete);
+            try{
+                $stmt->execute([
+                    ":i"=>$this->id,
+                    ":n"=>$this->nombre
+                ]);
+            }catch(PDOException $ex){
+                die("No se ha podido eliminar la plataforma. ".$ex);
+            }
         }
 
         //---------------------------------------------- SETTERS

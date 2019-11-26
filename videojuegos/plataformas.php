@@ -44,7 +44,7 @@
     <?php
 
     if($perfil==100){
-        echo "<a href='cplataforma.php' class='btn btn-info mt-3 mb-3> Crear PPlataforma </a>";
+        echo "<a href='cplataforma.php' class='btn btn-info mt-3 mb-3> Crear Plataforma </a>";
     }
     ?>    
    
@@ -65,11 +65,17 @@
                             <th scope='row'>{$item->id}</th>
                             <td>{$item->nombre}</td>
                             <td><img src='{$item->imagen}' width='80px' height='80px'></td>
-                            <td>@mdo</td>
+                            <td> <a href='mplataformas.php' class='btn btn-info'>Cambiar</a></td>
+                            <td> <a href='bplataformas.php' class='btn btn-danger'>Eliminar</a></td>
                         </tr>
                     ";
                 }
             ?>
+            <tr>
+                <td>
+                    <a href='plataformas.php' class='btn btn-info'>Volver</a></td>
+                </td>
+            </tr>
         </tbody>
         </table>
     </div>

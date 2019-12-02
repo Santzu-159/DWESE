@@ -1,5 +1,9 @@
 <?php   
     session_start();
+    if(!isset($_POST['usuario'])){
+        header("Location:index.php");
+        die();
+    }
     session_destroy();
     header("Location:index.php");
     die();

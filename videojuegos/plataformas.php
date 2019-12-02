@@ -15,6 +15,12 @@
             require "./class/".$clase.".php";
         });
 
+        function miToken(){ //asegurar la pagina para que no hagan ataques csrf
+            
+            return bin2hex(random_bytes(12));
+        }
+        $_SESSION['stoken']=miToken();
+
         $conexion = new Conexion();
         $llave = $conexion->getConector();
         $plataforma= new Plataformas($llave);
@@ -34,7 +40,15 @@
         <table align='right' cellpadding='3'>
         <tr>
                 <td><?php echo "Ususario: <b>$nombre</b>"?></td>
-                <td><a href="cerrarsesion.php" class='btn btn-info'>Cerrar Sesión</a></td>
+                <td>
+                    <form nombre="as" action="cerrarsesion.php" method="POST">
+                        <a href="cerrarsesion.php" class='btn btn-info'>Cerrar Sesión</a> <!-- ataques csrf se hace en toras las paginas, 
+                                                                                        lo mejor es hacer una funcion o una clase -->
+                        <input type="hidden" name="ftoken" value ="<?php echo $_SESSION['stoken'];?>">
+                        <input type="submit" class="btn btn-info" value="Cerrar Sesion">
+                        
+                    </form>
+                </td>
         </tr>
         </table>
     </div>
@@ -79,5 +93,6 @@
         </tbody>
         </table>
     </div>
+    <?php echo "<br><b>".miToken()."</b>" ?> <!-- nos muestra lo que hace esta funcion, es un ejemplo -->
 </body>
 </html>

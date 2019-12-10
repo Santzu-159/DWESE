@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 spl_autoload_register(function($clase){
     require ("./class/$clase.php");
     });
@@ -28,9 +30,18 @@ $conector = null;
         <br>
         <h1 align="center">COCHECICOS TO FLAMAH</h1><br><br>
         <div class='text-center'>
-            <a href='editar.php?id={$t->id}' class='btn btn-success'>Crear</a>
+            <a href='crear.php' class='btn btn-success'>Crear</a>
         </div>&nbsp;&nbsp;
-        <table class="table table-striped table-dark">
+
+        <?php
+        
+            if(isset($_SESSION['mensaje'])){
+                echo "<h2>".$_SESSION['mensaje']."</h2>";
+                unset($_SESSION['mensaje']);
+            }
+
+        ?>
+       <table class="table table-striped table-dark">
             <thead>
                 <tr>
                 <th scope="col">Codigo</th>

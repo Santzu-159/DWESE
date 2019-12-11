@@ -1,18 +1,18 @@
 <?php
 
-session_start();
+    session_start();
 
-spl_autoload_register(function($clase){
-    require ("./class/$clase.php");
-    });
+    spl_autoload_register(function($clase){
+        require ("./class/$clase.php");
+        });
 
-$conexion = new Conexion();
-$conector=$conexion->getConector();
+    $conexion = new Conexion();
+    $conector=$conexion->getConector();
 
-$coche = new Coches($conector);
-$todos = $coche->read(); 
+    $coche = new Coches($conector);
+    $todos = $coche->read(); 
 
-$conector = null;
+    $conector = null;
 
 ?>
 
@@ -63,7 +63,7 @@ $conector = null;
                         <td>{$t->color}</td>
                         <td>{$t->kmts}</td>
                         <td>
-                            <form action='borrar' method='post'>
+                            <form action='borrar.php' method='post'>
                                 <input type='hidden' name='id' value='{$t->id}'>
                                 <a href='editar.php?id={$t->id}' class='btn btn-info'>Editar</a>&nbsp;&nbsp;
                                 <input type='submit' class='btn btn-danger' value='Borrar'>

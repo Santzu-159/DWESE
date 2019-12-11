@@ -129,7 +129,7 @@ public function getCoche(){
         die("No se han podido obtener los datos: ".$ex);
     }
 
-    $coche = $stmt->fetchAll(PDO::FETCH_OBJ); //Devuelve todas las filas de la tabla como si fueran objetos
+    $coche = $stmt->fetch(PDO::FETCH_OBJ); //Devuelve todas las filas de la tabla como si fueran objetos
     return $coche;
 
 }

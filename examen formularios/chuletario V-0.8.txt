@@ -1,0 +1,43 @@
+/*conexion
+//__construct
+$this->dsn="mysql:host={$this->host};dbname={$this->base};charset=utf8";
+//getConector->try
+$this->conector=new PDO($this->dsn,$this->user,$this->pass);
+$this->conector->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+*/
+/*crud
+READ->recuperar todos; return $filas = fetchAll(PDO::FETCH_OBJ)
+CREATE-> insert into tala(celdas) values(:valores)
+UPDATE->update tabla set celda=:valor where id=:id
+DELETE->delete from tabla where id=:id
+getObjeto->recuperar uno en *especifico*; return $objeto=$stmt->fetch(PDO::FETCH_OBJ) //el objeto devuelto no puede acceder a los métodos de la clase
+existeAlgo -> while($fila=$stmt->fetch(PDO::FETCH_ASSOC)){$cont++;}return ($cont!=0)
+*/
+/*interno
+spl_autoload_register(function($clase){require "./class/$clase.php";});
+//Se crea clase Conexion -> se crea conector/llave con getConector -> se crea Objeto de la BD con ese conector/llave
+//cerrar siempre: $llave=null (o $conector=null)
+*/
+/*seguridad
+return bin2hex(random_bytes(12))
+<form action='cerrarsession.php' method='post'><input type='hidden' name='token' value='<?php echo $_SESSION['token']; ?>'>
+//en cerrarsession.php se valida que exista (isset) $_SESSION['token'] y $_POST['token'] y que son iguales
+*/
+/*no me fio de paco
+$_SERVER['PHP_SELF']
+hash('SHA256',$passUsu)
+//ficheros
+is_uploaded_file($_FILES['imagen']['tmp_name']
+$array=[
+ 'image/jpeg',
+ 'image/png',
+ 'image/tiff',
+ 'image/bmp',
+ 'image/gif',
+ 'image/x-icon',
+ 'image/svg+xml'
+];
+in_array($_FILES['imagen']['type'],$array
+$nombreFich="./recursos/img/$id-".$_FILES['imagen']['name']
+move_uploaded_file($_FILES['imagen']['tmp_name'],$nombreFich)
+*/

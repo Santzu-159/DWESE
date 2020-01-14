@@ -1,0 +1,14 @@
+{
+    "name": "usuario/practica-composer",
+    "type": "project",
+    "require": {
+        "nesbot/carbon": "^2.28"
+    },
+    "license": "free",
+    "authors": [
+        {
+            "name": "Santzu-159",
+            "email": "santzura.insomniac@gmail.com"
+        }
+    ]
+}

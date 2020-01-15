@@ -10,5 +10,17 @@
             "name": "Santzu-159",
             "email": "santzura.insomniac@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability": "stable",
+
+    "autoload": {
+
+        "psr-4":{
+            "src\\":"src/"
+        }
+    },
+
+    "config":{
+        "optimize-autoloader": true
+    }
 }

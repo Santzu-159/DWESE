@@ -13,7 +13,7 @@ class Conexion{
     public function __construct(){
         $this->user='userpdo';
         $this->pass='secreto';
-        $this->bd='base2020';
+        $this->bd='fechas';
         $this->host='localhost';
         $this->dsn="mysql:host={$this->host};dbname={$this->bd};charset=utf8";
     }

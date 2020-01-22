@@ -1,0 +1,32 @@
+---> crear proyecto
+composer create-project laravel/laravel mi-proyecto-laravel
+---> configurar rutas
+routes/web.php
+---> configurar controler
+app/Http/Controllers/(nombre Clase)Controller.php
+---> vistas
+resource/views
+---> configurar conexion db
+.env
+---> crear un modelo completo (migracion, controler, seeder, factory)
+php artisan make:model (Nombre del modelo primera en mayuscula y en singular) -mcrsf
+---> migracion del modelo (tablas, etc..)
+carpeta database/migration
+---> permitir rellenar datos por formulario
+app/(nombre Clase) -> protected $fillable=["campos"];
+---> configurar faker
+database/factories/(nombre Clase)Factory.php
+---> dar de alta seeder
+database/seeds/DatabaseSeeder.php
+---> configurar seeder
+database/seeds/(nombre Clase)Seeder.php
+---> migrar borrando las anteriores migraciones
+php artisan migrate:fresh
+---> rellenar tabla con Seeder
+php artisan db:seed
+---> gestion db
+php artisan tinker
+---> route resource
+el resource siempre abajo
+---> css local
+en public

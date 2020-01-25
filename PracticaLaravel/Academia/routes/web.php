@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("alumnos/listado",
+"AlumnosController@mostrarTodos")->name("alumnos.listado");
+
+Route::resource("alumnos","AlumnosController");

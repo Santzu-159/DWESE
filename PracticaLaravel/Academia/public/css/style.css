@@ -1,0 +1,19 @@
+
+body{
+    background-color: darkgray;
+    color: whitesmoke;
+}
+.normal, .grande, .extra{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.normal{
+    font-size: 16px;
+}
+.grande{
+    font-size: 18px;
+    font-weight:bolder;
+}
+.extra{
+    font-size:20px;
+    font-weight:bolder;
+}

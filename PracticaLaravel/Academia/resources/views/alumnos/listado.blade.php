@@ -16,7 +16,7 @@
   {{Session::get('mensaje')}}
 </div>
 @endif
-<a href="{{route('alumnos.crear')}}" class='btn btn-success mt-2 mb-2 normal'>Nuevo Alumno</a>
+<a href="{{route('alumnos.create')}}" class='btn btn-success mt-2 mb-2 normal'>Nuevo Alumno</a>
 {{--Tabla de la info--}}
 <table class="table table-dark normal">
     <thead>
@@ -43,7 +43,7 @@
                <form name="borrar" action="{{route('alumnos.destroy',$alumno)}}" method='POST' style='white-space:nowrap;'>
                 @csrf
                  @method('DELETE')
-                 <a href="{{route('alumnos.editar',$alumno)}}" class='btn btn-info normal'>Editar</a>
+                 <a href="{{route('alumnos.edit',$alumno)}}" class='btn btn-info normal'>Editar</a>
                 <input type="submit" value="Borrar" class='btn btn-danger normal'>
               </form>
             </td>

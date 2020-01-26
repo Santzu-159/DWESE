@@ -31,7 +31,7 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-        //
+        return view('alumnos.create');
     }
 
     /**
@@ -42,7 +42,17 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Primero validamos los datos
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos'=> 'required',
+            'email' => 'required|unique:alumnos',
+            'direccion' => 'required'
+        ]);
+        //Creamos el alumno
+        Alumnos::create($request->all());
+        Session::flash('mensaje','El alumno se ha creado correactemente.');
+        return redirect()->route('alumnos.listado');
     }
 
     /**
@@ -62,9 +72,9 @@ class AlumnosController extends Controller
      * @param  \App\Alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alumnos $alumnos)
+    public function edit(Alumnos $alumno)
     {
-        //
+        return view('alumnos.edit', compact('alumno'));
     }
 
     /**
@@ -74,9 +84,19 @@ class AlumnosController extends Controller
      * @param  \App\Alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alumnos $alumnos)
+    public function update(Request $request, Alumnos $alumno)
     {
-        //
+        //Primero validamos los datos
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos'=> 'required',
+            'email' => 'required|unique:alumnos',
+            'direccion' => 'required'
+        ]);
+        //Actualizamos los datos
+        $alumno->update($request->all());
+        Session::flash('mensaje','El alumno ha sido modificado correctamente.');
+        return redirect()->route('alumnos.listado');
     }
 
     /**
@@ -88,7 +108,7 @@ class AlumnosController extends Controller
     public function destroy(Alumnos $alumno)
     {
         $alumno->delete();
-        Session::flash('mensaje','El alumno ha sido eliminado exitosamente.');
+        Session::flash('mensaje','El alumno ha sido eliminado correctamente.');
         return redirect()->route('alumnos.listado');
     }
 }

@@ -12,6 +12,6 @@ class Marca extends Model
 
     public function coches(){
 
-        return $this->hasMany(Coche::class);
+        return $this->hasMany(Coche::class); // tiene muchos coches
     }
 }

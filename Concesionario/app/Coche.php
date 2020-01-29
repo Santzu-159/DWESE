@@ -11,6 +11,6 @@ class Coche extends Model
     //Un coche tendrá una unica marca en la relacion 1:n marcas:coches
 
     public function marca(){
-        return $this->belongsTo(Marca::class);
+        return $this->belongsTo(Marca::class); //tiene al menos una marca
     }
 }

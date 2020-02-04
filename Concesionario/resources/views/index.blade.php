@@ -13,5 +13,7 @@
     <a href="{{route('marcas.index')}}" class="btn btn-info mr-1">Marcas</a>
     <a href="{{route('coches.index')}}" class="btn btn-info ml-1">Coches</a>
     </div>
+
+    
 </body>
 </html> 

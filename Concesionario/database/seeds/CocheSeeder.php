@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use App\Coche;
+use Illuminate\Support\Facades\DB;
 
 class CocheSeeder extends Seeder
 {
@@ -14,12 +14,11 @@ class CocheSeeder extends Seeder
     public function run()
     {
         //Vaciamos las tablas
-        //desactivamos las constraints para no tener problemas para hacer el truncate
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        //Hacemos el truncate
+        //desactivamos la comprobación de llaves foráneas
+        DB::statement("SET FOREIGN_KEY_CHECKS=0;");
         DB::table('coches')->truncate();
-        // volvemos a activar las foreigns keys
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        //reactivamos la comprobación de llaves foráneas
+        DB::statement("SET FOREIGN_KEY_CHECKS=1;");
 
         Coche::create([
             'matricula'=>'1234-JJJ',
@@ -110,6 +109,14 @@ class CocheSeeder extends Seeder
             'klms'=>'12000',
             'pvp'=>'3456',
             'marca_id'=>'1'
+        ]);
+        Coche::create([
+            'matricula'=>'0090-HZX',
+            'modelo'=>'Wingston',
+            'color'=>'Gris',
+            'tipo'=>'Gasolina',
+            'klms'=>'12000',
+            'pvp'=>'3456'
         ]);
     }
 }

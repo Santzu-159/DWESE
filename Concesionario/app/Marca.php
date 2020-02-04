@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Coche;
+
 class Marca extends Model
 {
-    protected $fillable =['nombre','logo','pais'];
-    //vamos con las relaciones es 1:N es decir de una marca
-    //tendremos muchos coche. En marcars pondremos:
-
+    protected $fillable=['nombre','logo','pais'];
+    //vamos con las relaciones es 1:N es decir en una marca
+    //tendremos muchos coches, en marcas pondremos
     public function coches(){
-
-        return $this->hasMany(Coche::class); // tiene muchos coches
+        return $this->hasMany(Coche::class);
     }
 }

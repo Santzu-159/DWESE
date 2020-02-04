@@ -12,56 +12,49 @@ class MarcaSeeder extends Seeder
      */
     public function run()
     {
-        /*DB::table('marcas')->insert([
-            'nombre' => 'Seat',
-            'pais' => 'España'
-        ]);*/
-
-
+        // DB::table('marcas')->insert([
+        //     'nombre'=>'Seat',
+        //     'pais'=>'España'
+        // ]);
         //Vaciamos las tablas
-        //desactivamos las constraints para no tener problemas para hacer el truncate
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        //Hacemos el truncate
+        //desactivamos la comprobación de llaves foráneas
+        DB::statement("SET FOREIGN_KEY_CHECKS=0;");
         DB::table('marcas')->truncate();
-        // volvemos a activar las foreigns keys
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        //reactivamos la comprobación de llaves foráneas
+        DB::statement("SET FOREIGN_KEY_CHECKS=1;");
+
 
         Marca::create([
-            'nombre' => 'Seat',
-            'pais' => 'España'
-        ]);
-
+                'nombre'=>'Seat',
+                'pais'=>'España'
+            ]);
         Marca::create([
-            'nombre' => 'Renault',
-            'pais' => 'Francia'
-        ]);
-        Marca::create([
-            'nombre' => 'Volkswagen',
-            'pais' => 'Alemania'
+            'nombre'=>'Renault',
+            'pais'=>'Francia'
         ]);
         Marca::create([
-            'nombre' => 'Citroen',
-            'pais' => 'Francia'
+            'nombre'=>'VolksWagen',
+            'pais'=>'Alemania'
         ]);
-
         Marca::create([
-            'nombre' => 'Fiat',
-            'pais' => 'Italia'
+            'nombre'=>'Citroen',
+            'pais'=>'Francia'
         ]);
-
         Marca::create([
-            'nombre' => 'Opel',
-            'pais' => 'Alemania'
+            'nombre'=>'Fiat',
+            'pais'=>'Italia'
         ]);
-
         Marca::create([
-            'nombre' => 'Ford',
-            'pais' => 'USA'
+            'nombre'=>'Opel',
+            'pais'=>'Alemania'
         ]);
-
         Marca::create([
-            'nombre' => 'Toyota',
-            'pais' => 'Japón'
+            'nombre'=>'Ford',
+            'pais'=>'USA'
+        ]);
+        Marca::create([
+            'nombre'=>'Toyota',
+            'pais'=>'Japon'
         ]);
     }
 }

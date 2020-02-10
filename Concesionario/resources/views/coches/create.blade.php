@@ -40,7 +40,7 @@ Crear Coche
           <select name='tipo' class="form-control">
             <option selected>Diesel</option>
             <option>Gasolina</option>
-            <option>Híbrido</option>
+            <option>Hibrido</option>
             <option>Eléctrico</option>
             <option>Gas (GNC/GLC)</option>
         </select>
